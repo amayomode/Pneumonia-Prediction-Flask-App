@@ -1,5 +1,5 @@
 # Pneumonia-Prediction-Chest-Xray
-This is an app designed to analyze a chest x-ray and predict whether a person has TB/pneumonia or not.
+This is a Flask web app designed to analyze a chest x-ray and predict whether a person has TB/pneumonia or not.
 
 The model is based on a [convolutional neural network](https://en.wikipedia.org/wiki/Convolutional_neural_network) that has been trained on a dataset of 800 images from two sources
 
