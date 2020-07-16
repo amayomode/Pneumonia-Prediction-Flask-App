@@ -10,3 +10,5 @@ The model is based on a [convolutional neural network](https://en.wikipedia.org/
 The model has an overall accuracy of 83% and an F1 score of 80%.
 
 A negative prediction means that the chest X-ray is most likely normal while the contrary is implied by a positive prediction
+
+The web app can be found [here](https://tb-pneumonia-xray-detector.herokuapp.com/)
