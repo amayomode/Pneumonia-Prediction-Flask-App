@@ -1,0 +1,59 @@
+{% extends "base.html" %} 
+{% block content %}
+
+<center>
+<h2>Upload Image</h2><br>
+<section class="upload">
+    <div>
+        <div class="img-preview">
+            <p><img id="output" width="400" /></p>
+        </div>
+        <div>
+            <form id = "upload"  action="/" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <input type="file" id="image" name="image" onchange="loadFile(event)">
+                </div>
+                <div class="form-group">
+                    <button type="submit" id = 'predict' class="btn btn-primary" style="display: none;">Analyze</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="Predictions">
+        <div>
+            {% if predictions %}
+            <button type="button" class="btn btn-success">Negative: {{predictions.negative}}</button>
+            <button type="button" class="btn btn-danger">Positive: {{predictions.positive}}</button>
+            {% endif %}
+        </div>
+</section>
+<script>
+    // load image from local strorage
+    window.onload = function() {
+        let profileImage = localStorage.getItem("profileImageData");
+        if (profileImage !== null) {
+                document.getElementById("output").src = profileImage
+            }
+    }
+
+    // preview loaded image
+    const loadFile = function(event) {
+        document.getElementById('predict').style.display = 'block'
+        let image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+    // save loaded image to local storage
+    document.getElementById("image").addEventListener('change', function() {
+        var file = this.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            localStorage.setItem("profileImageData", reader.result);
+        };
+    } );
+</script>
+</center><br><br>
+{% endblock %}
