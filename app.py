@@ -51,7 +51,7 @@ def index():
                 image = process_image(image)
                 out = model.predict(image)
                 # send the predictions to index page
-                predictions = {"positive":str(np.round(out[0][0],2)),"negative":str(np.round(out[0][1],2))}
+                predictions = {"positive":str(np.round(out[0][1],2)),"negative":str(np.round(out[0][0],2))}
             except:
                 predictions ={}
                 redirect('/')   
